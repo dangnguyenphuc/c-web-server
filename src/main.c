@@ -17,20 +17,8 @@
 
 int main() {
 	// initiate HTTP_Server
-	Route* dang = create_Route("Dang", "123");
-	Route_LList* list = allocate_LList();
-	list = insert_LList(list, dang);
-	// list = insert_LList(list, create_Route("Yen", "456"));
-	// list = insert_LList(list, create_Route("Yen2", "778"));
-
-	Route_LList* temp = list;
-	while (temp)
-	{
-		printf("%s\n",temp->item->key);
-		temp = temp->next;
-	}
 	
-	return 0;
+
     // client_socket
 	
 	

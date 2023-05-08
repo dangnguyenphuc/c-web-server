@@ -33,7 +33,7 @@ Route_LList* insert_LList(Route_LList* list, Route* item){
 
     // else if list has 2 or more nodes
     Route_LList* temp = list;
-    while (temp->next->next)
+    while (temp->next)
     {
         temp = temp->next;
     }
@@ -46,18 +46,64 @@ Route_LList* insert_LList(Route_LList* list, Route* item){
 }
 
 Route_LList* removeHead_LList(Route_LList* list){
+    if(!list){  // if empty list
+        return list;
+    }else if(list->next == NULL){   // else if list has 1 node
+        Route_LList* node = list;
+        list = NULL;
+        printf("Deleting\tKey: %s\tValue:%s",node->item->key, node->item->value);
+        free(node->item->key);
+        free(node->item->value);
+        free(node->item);
+        free(node);
+        return list;
+    }
 
+    // else if list has 2 or more nodes
+    Route_LList* node = list->next;
+    Route_LList* temp = list;
+    temp->next = NULL;
+    list = node;
+    printf("Deleting\tKey: %s\tValue:%s",temp->item->key, temp->item->value);
+    free(temp->item->key);
+    free(temp->item->value);
+    free(temp->item);
+    free(temp);
+    return list;
 }
 void free_LList(Route_LList* list){
-
+    Route_LList* temp = list;
+    while (list)
+    {
+        temp = list;
+        list = list->next;
+        free(temp->item->key);
+        free(temp->item->value);
+        free(temp->item);
+        free(temp);
+    }
+    
 }
 
-Route_LList create_overflow_buckets(RoutesHashTable* table){
+Route_LList** create_overflow_buckets(RoutesHashTable* table){
+    Route_LList** buckets = (Route_LList **)calloc(table->size, sizeof(Route_LList *));
 
+    // all of elements in bucket are NULL
+    for (int i = 0; i < table->size; i++){
+        buckets[i] = NULL;
+    }
+
+    return buckets;
 }
 
 void free_overflow_buckets(RoutesHashTable* table){
+    Route_LList** buckets = table->overflow_buckets;
 
+    for (int i = 0; i < table->size; i++){
+        free_LList(table->overflow_buckets[i]);
+    }
+
+    free(buckets);
 }
 
 Route* create_Route(char* key, char* value){
@@ -79,7 +125,18 @@ void free_Route(Route *route){
 }
 
 RoutesHashTable* create_HashTable(int size){
+    RoutesHashTable* table = (RoutesHashTable *) malloc (sizeof(RoutesHashTable));
+    table->size = size;
+    table->count = 0;
+    table->items = (Route **)calloc(table->size, sizeof(Route *));
+    table->overflow_buckets = create_overflow_buckets(table);
 
+    for (int i = 0; i < size; ++i)
+    {
+       table->items[i] = NULL;
+    }
+
+    return table;
 }
 
 void free_HashTable(RoutesHashTable *table){

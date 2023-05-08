@@ -14,20 +14,22 @@
 #include "../include/Routes.h"
 #include "../include/Response.h"
 
-int hash(char* key) {
-    int hash_val = 0;
-    while (*key) {
-        hash_val = (hash_val << 5) + *key++;
-		printf("%d", hash_val);
-    }
-	
-    return hash_val % 100;
-}
 
 int main() {
 	// initiate HTTP_Server
-	int i = hash("dang");
-	printf("%d", i);
+	Route* dang = create_Route("Dang", "123");
+	Route_LList* list = allocate_LList();
+	list = insert_LList(list, dang);
+	// list = insert_LList(list, create_Route("Yen", "456"));
+	// list = insert_LList(list, create_Route("Yen2", "778"));
+
+	Route_LList* temp = list;
+	while (temp)
+	{
+		printf("%s\n",temp->item->key);
+		temp = temp->next;
+	}
+	
 	return 0;
     // client_socket
 	

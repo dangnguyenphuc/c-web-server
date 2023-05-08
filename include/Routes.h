@@ -35,7 +35,7 @@ Route_LList* removeHead_LList(Route_LList* list);
 void free_LList(Route_LList* list);
 Route_LList create_overflow_buckets(RoutesHashTable* table);
 void free_overflow_buckets(RoutesHashTable* table);
-void create_Route(char* key, char* value);
+Route* create_Route(char* key, char* value);
 void free_Route(Route *route);
 RoutesHashTable* create_HashTable(int size);
 void free_HashTable(RoutesHashTable *table);

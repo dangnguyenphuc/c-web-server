@@ -17,3 +17,14 @@ unsigned long hash(char* key){
 }
 ```
 
+## Compile these files
+Using ```make``` to compile these files and ```make clean``` to clean all the output files.
+
+
+## Result
+### First look
+![Testing program 1](/img/update1/1.png "index Page")
+![Testing program 2](/img/update1/2.png "about Page")
+
+I will implement more ...
+

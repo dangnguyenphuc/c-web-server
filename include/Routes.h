@@ -28,6 +28,7 @@ typedef struct RoutesHashTable
 	int count;
 } RoutesHashTable;
 
+char* routing(char* key);
 unsigned long hash(char* key);
 Route_LList* allocate_LList();
 Route_LList* insert_LList(Route_LList* list, Route* item);

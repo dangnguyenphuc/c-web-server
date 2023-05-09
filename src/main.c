@@ -77,8 +77,9 @@ int main() {
 		char template[100] = "";
 		
 		if(strstr(urlRoute, "/static/") != NULL){
-			strcat(template, "static/index.css");
+			strcat(template, "static/style.css");
 		}else{
+			urlRoute = routing(urlRoute);
 			char* destination = search_HashTable(table, urlRoute);
 			strcat(template,"templates/");
 			if(destination){

@@ -336,3 +336,9 @@ void print_HashTable(RoutesHashTable* table){
 
     printf("-------------------\n\n");
 }
+
+char* routing(char* key){
+    if(strcmp(key, "/index.html") == 0 || strcmp(key, "/index") == 0) return "/";
+    if(strcmp(key, "/about.html") == 0 ) return "/about";
+    return key;
+}

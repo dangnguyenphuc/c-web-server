@@ -43,6 +43,7 @@ void insert_HashTable(RoutesHashTable* table, char* key, char* value);
 void deleteElement_HashTable(RoutesHashTable* table, char* key);
 void handle_Collision_HashTable(RoutesHashTable* table, unsigned long index, Route *item);
 char* search_HashTable(RoutesHashTable* table, char* key);
+void print_search(RoutesHashTable *table, char *key);
 void print_HashTable(RoutesHashTable* table);
 
 #endif

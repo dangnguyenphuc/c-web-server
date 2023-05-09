@@ -22,7 +22,7 @@ char* render_template(char* filename){
     char* temp = malloc(sizeof(char)*(file_size+1));
     char c;
     int i = 0;
-    while (c = fgetc(file) != EOF)
+    while ((c = fgetc(file)) != EOF)
     {
         temp[i] = c;
         i += 1;

@@ -19,7 +19,7 @@ void init_HTTPServer(HTTP_Server* http_server, int port){
     
 
     // bind server_socket
-    bind(server_socket, (struct sockaddr*) &server_address, sizeof(server_socket));
+    bind(server_socket, (struct sockaddr*) &server_address, sizeof(server_address));
 
     // listen for incoming connections
     listen(server_socket, 4);

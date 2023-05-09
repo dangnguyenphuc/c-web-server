@@ -19,7 +19,7 @@ int main() {
 
 	// initiate HTTP_Server
 	HTTP_Server http_server;
-	init_HTTPServer(&http_server,6969);
+	init_HTTPServer(&http_server,1012);
 
     // client_socket
 	int client_socket;
